@@ -2,15 +2,15 @@
 #include <stdlib.h>
 
 typedef struct {
-    char estado;                     // Letra do estado (A a H)
-    char codigo[4];                  // Código da carta (ex: A01, B03)
-    char nomeCidade[50];            // Nome da cidade
-    int populacao;                  // População da cidade
-    float area;                     // Área em km²
-    float pib;                      // PIB em bilhões de reais
-    int pontosTuristicos;          // Número de pontos turísticos
-    float densidadePopulacional;   // Densidade populacional
-    float pibPerCapita;            // PIB per capita
+    char estado;                     
+    char codigo[4];                  
+    char nomeCidade[50];            
+    int populacao;                  
+    float area;                    
+    float pib;                     
+    int pontosTuristicos;         
+    float densidadePopulacional;  
+    float pibPerCapita;            
 } Carta;
 
 void lerCarta(Carta *carta, int numero) {
