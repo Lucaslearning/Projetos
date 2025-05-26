@@ -2,26 +2,28 @@
 #include <stdlib.h>
 
 typedef struct {
-    char estado;                     
-    char codigo[4];                  
-    char nomeCidade[50];           
-    int populacao;                  
-    float area;                     
-    float pib;                     
-    int pontosTuristicos;          
+    char estado;                     // Letra do estado (A a H)
+    char codigo[4];                  // Código da carta (ex: A01, B03)
+    char nomeCidade[50];            // Nome da cidade
+    int populacao;                  // População da cidade
+    float area;                     // Área em km²
+    float pib;                      // PIB em bilhões de reais
+    int pontosTuristicos;          // Número de pontos turísticos
+    float densidadePopulacional;   // Densidade populacional
+    float pibPerCapita;            // PIB per capita
 } Carta;
 
 void lerCarta(Carta *carta, int numero) {
     printf("\n--- Cadastro da Carta %d ---\n", numero);
-    
+
     printf("Informe a letra do estado (A a H): ");
-    scanf(" %c", &carta->estado);  
+    scanf(" %c", &carta->estado);
 
     printf("Informe o código da carta (ex: A01): ");
     scanf("%s", carta->codigo);
 
     printf("Informe o nome da cidade: ");
-    scanf(" %[^\n]", carta->nomeCidade); 
+    scanf(" %[^\n]", carta->nomeCidade);
 
     printf("Informe a população da cidade: ");
     scanf("%d", &carta->populacao);
@@ -34,6 +36,9 @@ void lerCarta(Carta *carta, int numero) {
 
     printf("Informe o número de pontos turísticos: ");
     scanf("%d", &carta->pontosTuristicos);
+
+    carta->densidadePopulacional = carta->populacao / carta->area;
+    carta->pibPerCapita = (carta->pib * 1000000000.0f) / carta->populacao; 
 }
 
 void exibirCarta(Carta carta, int numero) {
@@ -45,6 +50,8 @@ void exibirCarta(Carta carta, int numero) {
     printf("Área: %.2f km²\n", carta.area);
     printf("PIB: %.2f bilhões de reais\n", carta.pib);
     printf("Número de Pontos Turísticos: %d\n", carta.pontosTuristicos);
+    printf("Densidade Populacional: %.2f hab/km²\n", carta.densidadePopulacional);
+    printf("PIB per Capita: %.2f reais\n", carta.pibPerCapita);
 }
 
 int main() {
